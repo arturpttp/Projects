@@ -1,0 +1,5 @@
+name: Core #plugin name
+author: Darkanjo #author name, that's my nick xD
+version: 3.0.0-BETA #version of plugin
+main: net.dev.art.core.Core #main class of plugin
+#commands will be auto registered
