@@ -1,5 +1,8 @@
 package net.dev.art.core.lib.systems.repository.providers;
 
+import java.util.List;
+import java.util.Map;
+
 public class JsonProvider implements Provider {
 
     public Information information;
@@ -61,6 +64,41 @@ public class JsonProvider implements Provider {
 
     @Override
     public Object getOrDefault(String path, Object _default) {
+        return null;
+    }
+
+    @Override
+    public String getString(String path) {
+        return null;
+    }
+
+    @Override
+    public int getInt(String path) {
+        return 0;
+    }
+
+    @Override
+    public double getDouble(String path) {
+        return 0;
+    }
+
+    @Override
+    public float getFloat(String path) {
+        return 0;
+    }
+
+    @Override
+    public long getLong(String path) {
+        return 0;
+    }
+
+    @Override
+    public List<?> getList(String path) {
+        return null;
+    }
+
+    @Override
+    public Map<?, ?> getMap(String path) {
         return null;
     }
 }

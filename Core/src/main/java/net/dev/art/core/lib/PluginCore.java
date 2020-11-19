@@ -3,16 +3,17 @@ package net.dev.art.core.lib;
 import net.dev.art.core.API;
 import net.dev.art.core.interfaces.IPluginCore;
 import net.dev.art.core.interfaces.Placeholdable;
+import net.dev.art.core.interfaces.Utils;
 import net.dev.art.core.lib.server.plugin.PluginInformation;
 import net.dev.art.core.lib.systems.commands.AbstractCommand;
 import net.dev.art.core.lib.systems.events.EventListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class PluginCore extends JavaPlugin implements IPluginCore, Placeholdable {
+public class PluginCore extends JavaPlugin implements IPluginCore, Placeholdable, Utils {
 
+    protected boolean free = true;
     private String name;
     private Class<? extends PluginCore> clazz;
-    protected boolean free = true;
     private double cost;
     private PluginInformation information;
 
@@ -29,24 +30,30 @@ public class PluginCore extends JavaPlugin implements IPluginCore, Placeholdable
         addReplacer("{plugin-name}", this.name);
         addReplacer("{plugin-author}", this.information.getAuthor());
         addReplacer("{plugin-version}", this.information.getVersion());
-        addReplacer("{plugin-free}", this.free+"");
-        addReplacer("{plugin-cost}", this.cost+"");
+        addReplacer("{plugin-free}", this.free + "");
+        addReplacer("{plugin-cost}", this.cost + "");
     }
 
     @Override
     public void register() throws Exception {
         String pkg = clazz.getPackage().toString().replace("package ", "");
         JavaPlugin pl = JavaPlugin.getPlugin(clazz);
+        console(
+                " ",
+                "§bEventAPI §8» §eLoading...",
+                "§bCommandsAPI §8» §eLoading...",
+                " "
+        );
         for (Class<?> cls : API.getClassesForPackage(pl, pkg)) {
             if (EventListener.class.isAssignableFrom(cls) && cls != EventListener.class) {
                 EventListener cz = (EventListener) cls.newInstance();
                 cz.register(pl);
-                API.console("§bEventAPI §8» §fLoading events in class: " + cls.getSimpleName());
+                API.console("§bEventAPI §8» §fLoading events in class: §e" + cls.getSimpleName());
             }
             if (AbstractCommand.class.isAssignableFrom(cls) && cls != AbstractCommand.class) {
                 AbstractCommand cz = (AbstractCommand) cls.newInstance();
                 cz.register(pl);
-                API.console("§bCommandAPI §8» §fLoading command: " + cz.getName());
+                API.console("§bCommandAPI §8» §fLoading command: §e" + cz.getName());
             }
         }
     }

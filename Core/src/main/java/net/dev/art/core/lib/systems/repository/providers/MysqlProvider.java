@@ -131,7 +131,7 @@ public class MysqlProvider implements Provider, SQLProvider, Placeholdable {
         List<TableColumnType<?, ?>> columns = Arrays.asList(information.getMysql().getColumns());
         for (TableColumnType<?, ?> column : columns) {
             if (!column.isAutoIncrement())
-                tableFields += "`" + column.getColumnName() + ((columns.indexOf(column) == columns.size() - 1 ? "`" : "`, ");
+                tableFields += "`" + column.getColumnName() + ((columns.indexOf(column) == columns.size() - 1) ? "`" : "`, ");
         }
         addReplacer("{$table_fields}", tableFields);
 
@@ -155,6 +155,41 @@ public class MysqlProvider implements Provider, SQLProvider, Placeholdable {
 
     @Override
     public Object getOrDefault(String path, Object _default) {
+        return null;
+    }
+
+    @Override
+    public String getString(String path) {
+        return null;
+    }
+
+    @Override
+    public int getInt(String path) {
+        return 0;
+    }
+
+    @Override
+    public double getDouble(String path) {
+        return 0;
+    }
+
+    @Override
+    public float getFloat(String path) {
+        return 0;
+    }
+
+    @Override
+    public long getLong(String path) {
+        return 0;
+    }
+
+    @Override
+    public List<?> getList(String path) {
+        return null;
+    }
+
+    @Override
+    public Map<?, ?> getMap(String path) {
         return null;
     }
 }

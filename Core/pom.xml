@@ -33,7 +33,7 @@
             <artifactId>spigot-api</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
             <scope>system</scope>
-            <systemPath>C:/Minecraft/APIs/spigot188.jar</systemPath>
+            <systemPath>C:/Minecraft/Servers/Lobby/server.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>

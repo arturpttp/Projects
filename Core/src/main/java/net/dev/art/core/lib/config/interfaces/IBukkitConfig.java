@@ -7,7 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Set;
 
-public interface IBukkitConfig extends IConfiguration, StorageFile {
+public interface IBukkitConfig extends IConfiguration, StorageFile, TypesConfig {
 
     void setItem(String path, ItemStack item);
     void setLocation(String path, Location location);

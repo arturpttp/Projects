@@ -2,6 +2,7 @@ package net.dev.art.core.lib.systems.repository;
 
 import net.dev.art.core.lib.systems.repository.providers.Information;
 import net.dev.art.core.lib.systems.repository.providers.Provider;
+import org.bukkit.Bukkit;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,6 +38,12 @@ public abstract class Repository<T extends Storable> implements IRepository<T> {
     }
 
     public void add(T t) {
+        save(t);
+        RepositoryItem item = serialize(t);
+        
+    }
+
+    public void remove(T t) {
 
     }
 

@@ -12,6 +12,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Config implements IBukkitConfig {
@@ -178,5 +180,40 @@ public class Config implements IBukkitConfig {
 
     public FileConfiguration getConfig() {
         return config;
+    }
+
+    @Override
+    public String getString(String path) {
+        return this.config.getString(path);
+    }
+
+    @Override
+    public int getInt(String path) {
+        return this.config.getInt(path);
+    }
+
+    @Override
+    public double getDouble(String path) {
+        return this.config.getDouble(path);
+    }
+
+    @Override
+    public float getFloat(String path) {
+        return (float) this.config.getDouble(path);
+    }
+
+    @Override
+    public long getLong(String path) {
+        return this.config.getLong(path);
+    }
+
+    @Override
+    public List<?> getList(String path) {
+        return this.config.getList(path);
+    }
+
+    @Override
+    public Map<?, ?> getMap(String path) {
+        return (Map<?, ?>) this.config.get(path);
     }
 }
